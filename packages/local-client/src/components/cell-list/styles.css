@@ -1,0 +1,7 @@
+.cell-list--new-btn-group {
+  transition: opacity 0.2s ease;
+}
+
+.cell-list {
+  padding-bottom: 50vh;
+}

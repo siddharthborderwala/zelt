@@ -1,0 +1,61 @@
+.JSXElement.JSXIdentifier {
+  color: aquamarine;
+}
+
+.JSXElement.JSXBracket {
+  color: #dcdcdc;
+}
+
+.JSXElement.JSXText {
+  color: aliceblue;
+}
+
+.JSXElement.JSXGlyph {
+  background: aqua;
+  opacity: 0.25;
+}
+
+.JSXOpeningFragment.JSXBracket {
+  color: #dcdcdc;
+  font-weight: bold;
+}
+
+.JSXClosingFragment.JSXBracket {
+  color: #dcdcdc;
+  font-weight: bold;
+}
+
+.JSXOpeningElement.JSXBracket {
+  color: pink;
+  font-weight: bold;
+}
+
+.JSXOpeningElement.JSXIdentifier {
+  color: aquamarine;
+}
+
+.JSXClosingElement.JSXBracket {
+  color: pink;
+  font-weight: lighter;
+}
+
+.JSXClosingElement.JSXIdentifier {
+  color: aquamarine;
+  font-weight: lighter;
+}
+
+.JSXAttribute.JSXIdentifier {
+  color: pink;
+}
+
+.JSXExpressionContainer.JSXBracket {
+  color: antiquewhite;
+}
+
+.JSXSpreadChild.JSXBracket {
+  color: antiquewhite;
+}
+
+.JSXSpreadAttribute.JSXBracket {
+  color: antiquewhite;
+}

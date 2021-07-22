@@ -1,0 +1,6 @@
+.react-draggable-transparent-selection .iframe-wrapper:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
