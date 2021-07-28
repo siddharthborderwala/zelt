@@ -1,18 +1,25 @@
+import { useEffect } from 'react';
 import { Code, TextT } from 'phosphor-react';
-import { cellType } from 'src/state/cell';
-import { useAction, useTypedSelector } from '../../hooks';
+
 import { PrimaryButton } from '../button';
+import { cellType } from '../../state/cell';
+import { useAction, useTypedSelector } from '../../hooks';
 import CellListItem from '../cell-list-item';
 
 import './styles.css';
 
 const CellList: React.FC = () => {
   const cells = useTypedSelector(({ cells: { order, data } }) => order.map((id) => data[id]));
-  const { insertCellAfter } = useAction();
+  const { insertCellAfter, fetchCells } = useAction();
 
   const createNewBlock = (id: string | null, type: cellType) => {
     insertCellAfter(id, type);
   };
+
+  useEffect(() => {
+    fetchCells();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const BtnGroup: React.FC<{ id: string | null }> = ({ id }) => (
     <div

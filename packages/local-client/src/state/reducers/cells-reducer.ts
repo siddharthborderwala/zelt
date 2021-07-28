@@ -9,6 +9,7 @@ type CellsState = {
   error: string | null;
   order: string[];
   data: { [key: string]: Cell };
+  saveError: string | null;
 };
 
 const initialState: CellsState = {
@@ -16,6 +17,7 @@ const initialState: CellsState = {
   error: null,
   order: [],
   data: {},
+  saveError: null,
 };
 
 const reducer = (state: CellsState = initialState, action: CellAction) => {
@@ -53,6 +55,42 @@ const reducer = (state: CellsState = initialState, action: CellAction) => {
 
       if (foundIndex === -1) state.order.unshift(cell.id);
       else state.order.splice(foundIndex + 1, 0, cell.id);
+      return state;
+    }
+    case ActionType.FETCH_CELLS: {
+      state.loading = true;
+      state.error = null;
+      return state;
+    }
+    case ActionType.FETCH_CELLS_COMPLETE: {
+      const {
+        payload: { cells },
+      } = action;
+      state.data = {};
+      state.order = [];
+      cells.forEach((cell) => {
+        state.order.push(cell.id);
+        state.data[cell.id] = cell;
+      });
+      return state;
+    }
+    case ActionType.FETCH_CELLS_ERROR: {
+      const {
+        payload: { error },
+      } = action;
+      state.loading = false;
+      state.error = error;
+      return state;
+    }
+    case ActionType.SAVE_CELLS_SUCCESS: {
+      state.saveError = null;
+      return state;
+    }
+    case ActionType.SAVE_CELLS_ERROR: {
+      const {
+        payload: { error },
+      } = action;
+      state.saveError = error;
       return state;
     }
     default:

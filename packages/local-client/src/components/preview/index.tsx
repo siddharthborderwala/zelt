@@ -49,7 +49,6 @@ const Preview: React.FC<PreviewProps> = ({ code, bundlingError, loading }) => {
       iframe.current.contentWindow.postMessage(code, '*');
     }, 50);
   }, [code]);
-  console.log(loading);
 
   return (
     <div className="relative h-full iframe-wrapper flex-grow">
