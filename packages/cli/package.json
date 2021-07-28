@@ -1,17 +1,27 @@
 {
-  "name": "cli",
+  "name": "zelt-cli",
   "version": "1.0.0",
   "author": "Siddharth Borderwala",
   "license": "MIT",
+  "bin": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "start": "tsc --watch --preserveWatchOutput"
+    "start": "tsc --watch --preserveWatchOutput",
+    "prepublishOnly": "esbuild src/index.ts --platform=node --outfile=dist/index.js --bundle --minify --define:process.env.NODE_ENV=\\\"production\\\""
   },
   "dependencies": {
-    "commander": "^8.0.0",
-    "local-api": "^1.0.0"
+    "@zelt/local-client": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^16.4.0",
-    "typescript": "^4.3.5"
+    "esbuild": "^0.12.16",
+    "typescript": "^4.3.5",
+    "@zelt/local-api": "^1.0.0",
+    "commander": "^8.0.0"
   }
 }

@@ -1,6 +1,7 @@
-import path from 'path';
 import express from 'express';
 import { createProxyMiddleware } from 'http-proxy-middleware';
+
+import { createCellsRouter } from './routes/cells';
 
 export const serve = (
   port: number,
@@ -9,6 +10,8 @@ export const serve = (
   useProxy: boolean
 ): Promise<void> => {
   const app = express();
+
+  app.use(createCellsRouter(filename, dir));
 
   if (useProxy) {
     app.use(
@@ -19,7 +22,7 @@ export const serve = (
       })
     );
   } else {
-    const packagePath = require.resolve('local-client/build');
+    const packagePath = require.resolve('@zelt/local-client/build');
     app.use(express.static(packagePath));
   }
 
